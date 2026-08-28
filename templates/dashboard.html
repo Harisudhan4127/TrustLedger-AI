@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrustLedger-AI — Financial Agent Security Console</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">TrustLedger-AI</span>
+    <span class="brand-sub">Decision Governor for Autonomous Money</span>
+  </div>
+  <div class="topbar-actions">
+    <span id="ledgerStatus" class="ledger-pill">Ledger: checking…</span>
+    <button id="refreshBtn" class="btn-ghost">Refresh</button>
+  </div>
+</header>
+
+<main class="layout">
+
+  <section class="panel scenarios">
+    <h2>Run a demo scenario</h2>
+    <p class="hint">One-click fires a pre-built intent through all 15 modules.</p>
+    <div id="scenarioButtons" class="scenario-grid"></div>
+    <div id="scenarioResult" class="scenario-result"></div>
+  </section>
+
+  <section class="panel overview">
+    <h2>Security overview</h2>
+    <div id="overviewStats" class="stat-grid"></div>
+  </section>
+
+  <section class="panel monitor">
+    <h2>Transaction monitor</h2>
+    <table class="data-table" id="txnTable">
+      <thead>
+        <tr><th>Txn</th><th>Agent</th><th>Amount</th><th>Destination</th><th>Risk</th><th>Decision</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="panel agents">
+    <h2>Active agents</h2>
+    <table class="data-table" id="agentTable">
+      <thead>
+        <tr><th>Agent</th><th>Role</th><th>Baseline (μ ± σ)</th><th>Today spent</th><th>Txns today</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <section class="panel review">
+    <h2>Human review queue</h2>
+    <div id="reviewList" class="review-list"></div>
+  </section>
+
+  <section class="panel blocked">
+    <h2>Blocked transactions</h2>
+    <div id="blockedList" class="blocked-list"></div>
+  </section>
+
+  <section class="panel incidents">
+    <h2>Incident counts by agent</h2>
+    <canvas id="incidentChart" height="140"></canvas>
+  </section>
+
+  <section class="panel ledger">
+    <h2>Immutable audit ledger</h2>
+    <div id="ledgerList" class="ledger-list"></div>
+  </section>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
