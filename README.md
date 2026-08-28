@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # TrustLedger-AI — Risk-Aware Autonomy Layer for Financial AI Agents
 
 A working hackathon prototype of the 15-module Decision Governor architecture.
@@ -64,3 +65,6 @@ and `templates/` + `static/` render the live dashboard.
 rm app.db
 python database/seed_data.py
 ```
+=======
+# TrustLedger-AI
+>>>>>>> 8695f9fd43aca648a3b21a9174b102cdfe3981dc
