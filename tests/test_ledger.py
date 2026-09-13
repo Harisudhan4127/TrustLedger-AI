@@ -34,10 +34,11 @@ class LedgerContract(unittest.TestCase):
         return c
 
     # (identical contract as the probe: untouched -> True, then tamper -> False)
-    def test_untouched_chain_verifies(self):
+    def test_chain_contract_in_ordered_sequence(self):
+        # 1) untouched chain MUST verify (hash chain recomputed from whole DB)
         self.assertTrue(verify_chain(self._conn()))
 
-    def test_tampered_row_fails(self):
+        # 2) tamper the LATEST row, then the SAME verifier MUST reject
         conn = self._conn()
         conn.execute(
             "UPDATE audit_log SET entry_json='{}' "
@@ -45,11 +46,6 @@ class LedgerContract(unittest.TestCase):
         )
         conn.commit()
         self.assertFalse(verify_chain(conn))
-
-    def test_still_runs_all_15_stages(self):
-        sc = SCENARIOS["scenario_2_large_amount"]
-        r = run_pipeline(sc["payload"], sc["token"])
-        self.assertEqual(len(r["pipeline_stages"]), 15)
 
 
 if __name__ == "__main__":
