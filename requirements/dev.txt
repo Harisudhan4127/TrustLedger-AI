@@ -1,0 +1,5 @@
+# Development / test extras (kept out of the runtime image).
+-r base.txt
+# test tooling for contributors (optional; project tests also run via stdlib unittest)
+pytest==8.3.3
+pytest-cov==6.0.0
